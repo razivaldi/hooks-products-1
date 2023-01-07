@@ -4,11 +4,11 @@ import Categories from './Categories';
 import items from './data';
 
 //Get exist categories
-const existCategories = items.map((item) => item.category);
+const existCategories = []; 
 //create set of unique category
-const myset = new Set(existCategories);
+const myset = [];
 //create array categories contains 'all' and exist categories
-const allCategories = ['all', ...myset]
+const allCategories = [];
 
 function App() {
 
@@ -28,8 +28,10 @@ function App() {
           <h2>Our Products</h2>
           <div className="underline"></div>
         </div>
+        {/* fill with state name*/}
         <Categories categories={STATE_CATEGORIES} filterItems={filterItems} />
       </section>
+      {/* fill with state name*/}
       <ProductList items={STATE_PRODUCTS} />
     </main>
   );
