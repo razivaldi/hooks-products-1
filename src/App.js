@@ -3,22 +3,22 @@ import ProductList from './ProductList'
 import Categories from './Categories';
 import items from './data';
 
-const allCategories = ['all', ...new Set(items.map((item) => item.category))]
+//Get exist categories
+const existCategories = items.map((item) => item.category);
+//create set of unique category
+const myset = new Set(existCategories);
+//create array categories contains 'all' and exist categories
+const allCategories = ['all', ...myset]
 
 function App() {
+
+  //create state for product items
   const [productItems, setProductItems] = useState(items);
+  //create state for array categories
   const [categories, setCategories] = useState(allCategories);
 
   const filterItems = (category) => {
-
-    if(category === 'all'){
-      setProductItems(items);
-      return;
-    }
-
-    const newItems = items.filter( (item) => item.category === category);
-
-    setProductItems(newItems);
+    //WRITE YOUR CODE
   }
 
   return (
@@ -28,9 +28,9 @@ function App() {
           <h2>Our Products</h2>
           <div className="underline"></div>
         </div>
-        <Categories categories={categories} filterItems={filterItems} />
+        <Categories categories={STATE_CATEGORIES} filterItems={filterItems} />
       </section>
-      <ProductList items={productItems} />
+      <ProductList items={STATE_PRODUCTS} />
     </main>
   );
 }
