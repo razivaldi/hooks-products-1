@@ -1,16 +1,16 @@
 import React from 'react';
 
-const Categories = ({categories, filterItems}) => {
+const Prices = ({listPrices, filterPrice }) => {
   return (
     <div className="btn-container">
-      {categories.map( (category, index) => {
+      {listPrices.map( (price, index) => {
         return (
           <button type="button"
           className="filter-btn"
           key={index}
-          onClick={() => filterItems(category)}
+          onClick={() => filterPrice(price)}
           >
-            {category}
+            {price}
           </button>
         )
       })}
@@ -18,4 +18,4 @@ const Categories = ({categories, filterItems}) => {
   );
 };
 
-export default Categories;
+export default Prices;
