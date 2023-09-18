@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import ProductList from "./ProductList";
 import Categories from "./Categories";
 import items from "./data";
@@ -37,12 +37,12 @@ function App() {
   const [number, setNumber] = useState(0);
   const [dark, setDark] = useState(false);
 
-  const getItems = () => {
+  const getItems = useCallback(() => {
     const startNumber = Number.isNaN(number) ? 0 : number;
     return [startNumber, startNumber + 1, startNumber + 2];
-  };
+  },[number])
 
-  const itemsMemo = useMemo(() => getItems(number), [number]);
+  // const itemsMemo = useMemo(() => getItems(number), [number]);
   // console.log(getMemo)
 
   const theme = {
@@ -71,7 +71,7 @@ function App() {
           onChange={(e) => setNumber(parseInt(e.target.value, 10))}
         />
         <button onClick={() => setDark(!dark)}>Change Mode</button>
-        <List getItems={itemsMemo}></List>
+        <List getItems={getItems}></List>
       </div>
     </main>
   );
